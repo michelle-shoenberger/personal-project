@@ -1,0 +1,9 @@
+.myform input, select, textarea {
+  width: 50%;
+  max-width: 500px;
+}
+
+input.myform {
+  width: 50%;
+  max-width: 500px;
+}
