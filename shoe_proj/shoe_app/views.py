@@ -11,6 +11,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
     def get_queryset(self):
+        print(self.request.user)
         return Category.objects.filter(user=self.request.user)
 
 class ExpenseViewSet(viewsets.ModelViewSet):

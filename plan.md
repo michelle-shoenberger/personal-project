@@ -2,6 +2,8 @@ questions
 - switching between list and detail - between holding it all in app, or in another parent component, or passing the information between pages
   - it's supposed to be a single-page
 - conditional routing - can I make a master route that goes away once logged in
+- re-renders from props/context/loaders
+  - no updating after initial render
 
 # Versions
 - 1
@@ -127,7 +129,7 @@ questions
   - currentList - taking in a filter, is a part of the expenses state
     - passed to expense list as prop
     - setfunction in useEffect when filter changes
-  - filter?
+  - filter
 
 - filter section
   - pass setfunction for filter state
@@ -189,19 +191,21 @@ questions
 
 - state 
   - expense - individual object
-    - passed by prop
+    - passed by loader - axios call
+    - can I pass from expenses?
 - navigation - from expense list
 
 + list details
   + simple list
+  - pass down categories
   - stretch - form
   - stretch - image (api call)
-+ nav - change content of expense page
-  + set listitem - onclick sets state
-  + conditional rendering of list/detail
++ nav - 
+  + set listitem - onclick as Link
+ 
 + route back to list - same list
-  + add button
-  + clear selected
+  + Link
+
 
 ### Archives page
 - features

@@ -8,9 +8,9 @@ import { Helmet } from 'react-helmet';
 import Layout from './pages/Layout.jsx';
 
 import HomePage from './pages/HomePage.jsx';
-import ExpensesPage from './pages/ExpensesPage.jsx';
+import { ExpensesPage, expensesPageLoader } from './pages/ExpensesPage.jsx';
 import ExpenseList from './components/ExpenseList';
-import ExpenseDetail from './components/ExpenseDetail';
+import {ExpenseDetail} from './components/ExpenseDetail';
 import LoginPage from './pages/LoginPage.jsx';
 
 
@@ -81,6 +81,8 @@ function App() {
         {
           path: "/expenses",
           element: <ExpensesPage cats={categories}/>,
+          loader: expensesPageLoader,
+          id: "expenses",
           children: [
             {
               path: "",
@@ -89,6 +91,7 @@ function App() {
             {
               path: ":id",
               element: <ExpenseDetail />,
+              //loader: ExpenseDetailLoader
             },
           ]
         },
