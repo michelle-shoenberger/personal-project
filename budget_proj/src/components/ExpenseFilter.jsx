@@ -1,10 +1,16 @@
 import { useState } from "react";
 
 export default function ExpenseFilter(props) {
-  const [choice, setChoice] = useState(null);
+  const [choice, setChoice] = useState(() => {
+    if (props.initial) {
+      return props.initial['by']
+    } else {
+      return null
+    }
+  });
 
   const handleFilter = (by, data) => {
-    props.changeFilter({
+    props.handleFilter({
       'by': by,
       'word': data
     })
@@ -14,7 +20,7 @@ export default function ExpenseFilter(props) {
     if (choice) {
       console.log('choice')
       if (choice==="name") {
-        return <input className="myform" type="text" placeholder="Search" onChange={(e) => handleFilter('name', e.target.value)}/>
+        return <input className="myform" type="text" placeholder="Search" value={props.initial && props.initial['word']} onChange={(e) => handleFilter('name', e.target.value)}/>
       } else {
         return (
           <select className="myform" onChange={(e)=> handleFilter('cat', e.target.value)}>

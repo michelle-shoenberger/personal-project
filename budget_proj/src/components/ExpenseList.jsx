@@ -1,19 +1,25 @@
 import {ListGroup} from 'react-bootstrap';
 import { useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
+import ExpenseFilter from './ExpenseFilter';
 import ExpenseListItem from "../components/ExpenseListItem";
 
 
+
 export default function ExpenseList(props) {
-  // props - all, handleSelect
+  // props - all, 
+  // props for filter - initial, handleFilter
+  // handleSelect
+  const [all, initial, handleFilter, handleSelect, expense] = useOutletContext();
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    if (props.all) {
+    if (all) {
       setTotal(() => {
-        console.log(props.all)
+        console.log(all)
         let total = 0;
-        for (let i=0; i<props.all.length; i++) {
-          total += parseFloat(props.all[i].cost);
+        for (let i=0; i<all.length; i++) {
+          total += parseFloat(all[i].cost);
         }
         return Math.round(total*100)/100
       });
@@ -21,14 +27,15 @@ export default function ExpenseList(props) {
       setTotal(0)
     }
     
-  }, [props.all])
+  }, [all])
 
   return (
     <>
+      <ExpenseFilter initial={initial} handleFilter={handleFilter} />
       <h1>Expenses List</h1>
       <p> Total expense: ${total}</p>
       <ListGroup>
-        {props.all && props.all.map((expense, index) => <ExpenseListItem key={index} expense={expense} handleSelect={props.handleSelect} />)}
+        {all && all.map((expense, index) => <ExpenseListItem key={index} expense={expense} handleSelect={handleSelect} />)}
       </ListGroup>
     </>
   )

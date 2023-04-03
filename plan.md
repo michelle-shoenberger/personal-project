@@ -3,9 +3,23 @@ questions
   - it's supposed to be a single-page
 - conditional routing - can I make a master route that goes away once logged in
 
+# Versions
+- 1
+
+- 2
+  - 2.1 - routing, children for expense page
+
+
+- change routing to be children
+- look into separate context files - with state
+- make separate api call folder
+
+
+
 # To do list
 - Setup django api
 - Setup budget react front-end
+
 
 ## Front-end work
 + navigation

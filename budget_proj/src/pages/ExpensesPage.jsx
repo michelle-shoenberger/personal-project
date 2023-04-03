@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import { useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import {Helmet} from 'react-helmet'
 import axios from 'axios';
 import ExpenseList from "../components/ExpenseList";
@@ -7,16 +7,9 @@ import ExpenseDetail from '../components/ExpenseDetail.jsx';
 import ExpenseFilter from "../components/ExpenseFilter";
 
 export default function ExpensesPage(props) {
-  const navigate = useNavigate();
-  // const {user, setUser} = useContext
-  // useEffect(() => {
-  //   if (!user) {
-  //     navigate('/login')
-  //   }
-  // }, [user])
+  // props - cats
 
-
-  const[expenses, setExpenses] = useState("")
+  const [expenses, setExpenses] = useState("")
   const [currentList, setCurrentList] = useState(null)
   const [selected, setSelected] = useState(null)
   const [filterObj, setFilterObj] = useState(null) 
@@ -51,7 +44,7 @@ export default function ExpensesPage(props) {
 
   useEffect(() => {
     console.log('useEffect')
-    console.log(filterObj)
+    console.log('filterObj', filterObj)
     if (expenses.length != 0 && filterObj) {
       const filteredLst = expenses.filter((expense) => {
         if (filterObj.by === 'name') {
@@ -73,12 +66,13 @@ export default function ExpensesPage(props) {
       <Helmet>
         <title>Expenses</title>
       </Helmet>
-      {!selected && <ExpenseFilter changeFilter={setFilterObj} cats={props.cats}/>}
-      {selected ?
-        <ExpenseDetail expense={selected} handleSelect={setSelected} />
-        : <ExpenseList all={currentList} handleSelect={setSelected} />
-      }
+      <Outlet context={[currentList, filterObj, setFilterObj, setSelected, selected]} />
       
     </>
   )
 }
+
+// {!selected && <ExpenseFilter initial={filterObj} changeFilter={setFilterObj} cats={props.cats}/>}
+// {selected ?
+//   <ExpenseDetail expense={selected} handleSelect={setSelected} />
+//   : <ExpenseList all={currentList} handleSelect={setSelected} />

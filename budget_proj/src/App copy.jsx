@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -9,8 +10,6 @@ import Layout from './pages/Layout.jsx';
 
 import HomePage from './pages/HomePage.jsx';
 import ExpensesPage from './pages/ExpensesPage.jsx';
-import ExpenseList from './components/ExpenseList';
-import ExpenseDetail from './components/ExpenseDetail';
 import LoginPage from './pages/LoginPage.jsx';
 
 
@@ -72,6 +71,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
+      path: "/",
       element: <Layout />,
       children: [
         {
@@ -81,16 +81,6 @@ function App() {
         {
           path: "/expenses",
           element: <ExpensesPage cats={categories}/>,
-          children: [
-            {
-              path: "",
-              element: <ExpenseList />,
-            },
-            {
-              path: ":id",
-              element: <ExpenseDetail />,
-            },
-          ]
         },
         {
           path: "/login",
@@ -106,9 +96,17 @@ function App() {
       <Helmet>
         <title>Budget App</title>
       </Helmet>
-      <UserContext.Provider value={{user, setUser}}>
-        <RouterProvider router={router} />
-      </UserContext.Provider>
+      <Router>
+        <UserContext.Provider value={{user, setUser}}>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/login" element={<LoginPage handleLogin={setUser} user={user}/>} />
+              <Route path="/" element={<HomePage cats={categories}/>} />
+              <Route path="/expenses" element={<ExpensesPage cats={categories} />} />
+            </Route>
+          </Routes>
+        </UserContext.Provider>
+      </Router>
     </div>
   )
 }
