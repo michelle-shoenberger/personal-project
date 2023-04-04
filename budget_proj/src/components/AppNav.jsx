@@ -3,7 +3,7 @@ import {NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import { UserContext } from '../App';
+import {UserContext} from '../context/UserContext';
 
 export default function AppNav() {
     const {user, setUser} = useContext(UserContext);

@@ -80,4 +80,3 @@ export default function BudgetSummary(props) {
   )
 }
 
-//<BarChart chartData={chartData} />

@@ -29,8 +29,7 @@ export default function ExpenseFilter(props) {
           </select>
         )
       }
-    // } else {
-    //   return <input className="myform" type="text" placeholder="Search"/>
+
     }
   };
 

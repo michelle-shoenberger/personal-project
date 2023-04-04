@@ -4,6 +4,7 @@ questions
 - conditional routing - can I make a master route that goes away once logged in
 - re-renders from props/context/loaders
   - no updating after initial render
+- can I move the state to the context file? and move the provider back to app?
 
 # Versions
 - 1
@@ -11,12 +12,13 @@ questions
 - 2
   - 2.1 - routing, children for expense page
   - 2.2 - filter persists, fixed state in expenses
-  - 
+  - 2.3 - re-structure of useContext, appLoader added
 
 
 
-- look into separate context files - with state
+  
 - make separate api call folder
+- add crud to expenses page - how to update in real time, with loader call
 
 
 
@@ -31,12 +33,12 @@ questions
   + functional nav links
     + brand
     + expenses
+    - history
   + add user button
     - avatar for user
     - dropdown for profile, settings, logout
   + conditional routing - only access the log in page until logged in
-    + go to home once whoami comes back
-      - is this the best way?
+    + layout loader returns user, if not navigate to login
 
 + routing
   + layout - appnav and main page, footer
@@ -46,17 +48,15 @@ questions
     + expense detail
 
 - authentication
-  + layout - can't access other pages until logged in
+  + can't access other pages until logged in
   + pull expenses/cats/summary based on user
     - else return nothing - navigate to login
   - api auth - require token for get/post
 
 ### Login page
 - features
-  - log in form
+  + log in form
   - sign up form - auto log in
-
-
 
 + login in user
   + form

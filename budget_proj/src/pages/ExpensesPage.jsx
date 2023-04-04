@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import { Outlet, useLoaderData } from "react-router-dom";
 import {Helmet} from 'react-helmet'
 import axios from 'axios';
+import {UserContext} from "../context/UserContext";
 
 
 export async function expensesPageLoader() {
@@ -25,7 +26,7 @@ export async function expensesPageLoader() {
 
 
 export function ExpensesPage(props) {
-  // props - cats
+  const {cats} = useContext(UserContext);
   const expenses = useLoaderData()['expenses'];
 
   const [currentList, setCurrentList] = useState(expenses)
@@ -54,13 +55,9 @@ export function ExpensesPage(props) {
       <Helmet>
         <title>Expenses</title>
       </Helmet>
-      <Outlet context={{'all': currentList, 'filter': [filterObj, setFilterObj], 'cats': props.cats}} />
+      <Outlet context={{'all': currentList, 'filter': [filterObj, setFilterObj], 'cats': cats}} />
       
     </>
   )
 }
 
-// {!selected && <ExpenseFilter initial={filterObj} changeFilter={setFilterObj} cats={props.cats}/>}
-// {selected ?
-//   <ExpenseDetail expense={selected} handleSelect={setSelected} />
-//   : <ExpenseList all={currentList} handleSelect={setSelected} />

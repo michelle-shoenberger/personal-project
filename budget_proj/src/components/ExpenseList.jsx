@@ -4,8 +4,6 @@ import { useOutletContext } from 'react-router-dom';
 import ExpenseFilter from './ExpenseFilter';
 import ExpenseListItem from "../components/ExpenseListItem";
 
-
-
 export default function ExpenseList(props) {
   
   const {all, filter, cats} = useOutletContext();

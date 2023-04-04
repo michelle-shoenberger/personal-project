@@ -1,16 +1,13 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie';
+import {UserContext} from '../context/UserContext'
 
 export default function LoginPage(props) {
   const navigate = useNavigate();
-  const {user, setUser} = useContext
-  useEffect(() => {
-    if (!user) {
-      navigate('/login')
-    }
-  }, [user])
+  const {user, setUser} = useContext(UserContext)
+
 
   const [username, setUsername] = useState(null);
   const [pwd, setPwd] = useState(null);
@@ -26,7 +23,7 @@ export default function LoginPage(props) {
     console.log(resp.data)
     Cookies.set('token', resp.data.token, {expires: 1/48})
     axios.defaults.headers.common['Authorization'] = "Token " + resp.data.token;
-    props.handleLogin(resp.data)
+    setUser(resp.data)
     navigate('/')
   }
 
