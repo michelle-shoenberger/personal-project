@@ -1,0 +1,70 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HomePage > create a snapshot 1`] = `
+[
+  <h1
+    className="mb-5"
+  >
+     Home Page 
+  </h1>,
+  <h2>
+     Total expenditure this month 
+  </h2>,
+  <div
+    className="mt-2"
+  >
+    <canvas
+      height={150}
+      role="img"
+      width={300}
+    />
+  </div>,
+  <h2
+    className="mt-3"
+  >
+     Budget status 
+  </h2>,
+  <div>
+    <canvas
+      height={150}
+      role="img"
+      width={300}
+    />
+  </div>,
+  <h2
+    className="mt-5"
+  >
+     Create new expense: 
+  </h2>,
+  <form
+    className="myform d-flex flex-column align-items-center"
+    onSubmit={[Function]}
+  >
+    <input
+      name="item_name"
+      placeholder="item_name"
+      type="text"
+    />
+    <input
+      name="cost"
+      placeholder="cost"
+      type="float"
+    />
+    <input
+      name="category"
+      placeholder="category"
+      type="select"
+    />
+    <textarea
+      name="description"
+      placeholder="description"
+    />
+    <button
+      className="btn btn-primary"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>,
+]
+`;

@@ -74,7 +74,7 @@ export default function BudgetSummary(props) {
     <>
       <h2 className="mt-3"> Budget status </h2>
       {showBudgetSummary()}
-      {chartData && <BarChart chartData={chartData} />}
+      {chartData && <BarChart chartData={chartData} title="Budget progress" />}
       
     </>
   )

@@ -9,8 +9,8 @@ import { ExpensesPage, expensesPageLoader } from './pages/ExpensesPage.jsx';
 import ExpenseList from './components/ExpenseList';
 import {ExpenseDetail} from './components/ExpenseDetail';
 import LoginPage from './pages/LoginPage.jsx';
-
-import {UserContextProvider} from './context/UserContext'
+import { HistoryPage, historyLoader } from './pages/HistoryPage';
+import {UserContextProvider} from './context/UserContext';
 
 
 
@@ -42,8 +42,17 @@ function App() {
           ]
         },
         {
+          path: "/history",
+          element: <HistoryPage />,
+          loader: historyLoader
+        },
+        {
           path: "/login",
           element: <LoginPage />,
+        },
+        {
+          path: "*",
+          element: <HomePage />,
         },
       ],
     },

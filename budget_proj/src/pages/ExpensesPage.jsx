@@ -7,7 +7,7 @@ import {UserContext} from "../context/UserContext";
 
 export async function expensesPageLoader() {
   try{
-    const resp = await axios.get('http://127.0.0.1:8000/expenses/')
+    const resp = await axios.get('http://127.0.0.1:8000/api/expenses/')
     .catch((e) => {
       console.log("getExpense error: " + e)
     });

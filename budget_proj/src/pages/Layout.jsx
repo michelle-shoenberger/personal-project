@@ -14,7 +14,7 @@ export async function appLoader () {
   if (token) {
     console.log('api call for whoami', token)
     axios.defaults.headers.common['Authorization'] = "Token " + token;
-    const resp = await axios.post('http://127.0.0.1:8000/whoami/')
+    const resp = await axios.post('http://127.0.0.1:8000/api/whoami/')
       .catch((e) => {
         console.log("Usercheck error: " + e)
       });
@@ -42,6 +42,7 @@ export function Layout() {
     if (!currentUser && !user) {
       navigate('/login')
     } else if (!user) {
+      console.log('setting user')
       setUser(currentUser)
     }
   }, [user])
@@ -49,7 +50,7 @@ export function Layout() {
 
   useEffect(() => {
     const getCategories = async () => {
-      const resp = await axios.get('http://127.0.0.1:8000/category/')
+      const resp = await axios.get('http://127.0.0.1:8000/api/category/')
         .catch((e) => {
           console.log("getCategories error: " + e)
       });
@@ -57,7 +58,7 @@ export function Layout() {
       data.sort((a,b) => {
         return a.name > b.name ? 1 : a.name<b.name ? -1 : 0
       });
-      console.log(data)
+      console.log('cats', data)
       setCats(data)
     };
     if (user) {
@@ -71,11 +72,11 @@ export function Layout() {
   }, [user]);
 
   return (
-    <>
+    <div style={{minWidth: '400px'}}>
       <AppNav />
       <Container style={{marginTop: '9vh'}}>
         <Outlet />
       </Container>
-    </>
+    </div>
   )
 };

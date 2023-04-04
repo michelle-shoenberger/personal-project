@@ -13,12 +13,16 @@ questions
   - 2.1 - routing, children for expense page
   - 2.2 - filter persists, fixed state in expenses
   - 2.3 - re-structure of useContext, appLoader added
-
+- 3 
+  - 3.1 - adding historicals
 
 
   
 - make separate api call folder
 - add crud to expenses page - how to update in real time, with loader call
+- make everything for the current month
+- historical page
+- user pages
 
 
 
@@ -80,21 +84,21 @@ questions
     + totals by all, and category
     + table 
     + stretch - graph - pie chart
-    - stretch - for this month
-      - leave picking a date range for the archives
+    + stretch - for this month
+      + leave picking a date range for the archives
   + consumption of budget
     + compare expense in each category against limit - % left
     + stretch - chart
     - stretch - ryg indicator - day by day targets
 
 - summary
-  - total expenditure - for this month
+  + total expenditure - for this month
     + table of expenses ending in total
     + stretch - pie char
-  - status of budget
+  + status of budget
     + $X of $X used
       - % used
-    - stretch - bar graph of % for each category
+    + stretch - bar graph of % for each category
     - stretch - ryg indicator
       - track consumption on a per day basis
 
@@ -119,21 +123,27 @@ questions
 + budget summary
   + add bar chart
   - add gyr indicator
-- make the summary page for current month
++ make the summary page for current month
 - stretch - toggle - choose new or summary
+- change to only the budget status
+  - but keep pie chart
 
 ### Expense page
 - control expenses state
 - either list all or show details
 
 - state
-  - expenses - called from api initially on page, not changed
+  - expensesInitial - called from api initially on page, not changed
+    - only for current month
+  - expenses - held in state, updated as needed
+    - ensure changes also sent to api
   - currentList - taking in a filter, is a part of the expenses state
     - passed to expense list as prop
     - setfunction in useEffect when filter changes
   - filterObj
 
 - stretch - set up context for filter (obj, setFunction)
+- stretch - pull expenses from api for different timeframes
 
 
 #### Filter
@@ -204,9 +214,18 @@ questions
   + Link
 
 
-### Archives page
+### History page
 - features
-  - 
+
+
+- create page
+  + add to nav
+  + basic start
+  + useEffect that calls endpoint
+  - next
+- create monthly totals chart
+- create total savings 
+- create montly by cat scatter chart
 
 
 ## Back-end work
@@ -241,7 +260,7 @@ questions
   - limit - decimal - exact amount
     - stretch - percentage of budget total
 
-### Custom views
+### Summary endpoint
 
 - summary - return summary data
   - for current month
@@ -270,6 +289,16 @@ questions
     + keep counter for full total
   + return Json
 
+### Historicals endpoint
+- should I have the totals in a Django model that gets updated?
+  - or re-calculate each time
+  - only consideration is the time involved but lookups are quick
+
+
+
++ create url endpoint
+- create view
+  - design return - array of objects
 
 # Site design
 - Universal nav bar

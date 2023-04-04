@@ -37,6 +37,14 @@ class Expense(models.Model):
     def __str__(self):
         return f"{self.item_name}"
     
+    # @property
+    # def month(self):
+    #     return self.date.month
+    
+    # @property
+    # def year(self):
+    #     return self.date.year
+    
 class Budget(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="budgets")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="budgets")

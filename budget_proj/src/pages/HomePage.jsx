@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext } from 'react';
-
+import { useNavigate } from 'react-router-dom'
 import {Helmet} from 'react-helmet'
 import MyForm from "../components/MyForm";
 import Summary from '../components/Summary';
@@ -8,6 +8,7 @@ import { UserContext } from '../context/UserContext';
 
 export default function HomePage(props) {
   const {cats} = useContext(UserContext);
+  const navigate = useNavigate();
 
   const model = {
     'item_name': 'text',
@@ -17,7 +18,7 @@ export default function HomePage(props) {
   };
   const handleSubmit = async (data, endpoint) => {
     //console.log(data)
-    let resp = await axios.post('http://127.0.0.1:8000'+endpoint, data)
+    let resp = await axios.post('http://127.0.0.1:8000/api'+endpoint, data)
       .catch((e) => {
         console.log("getExpense error: " + e)
       });

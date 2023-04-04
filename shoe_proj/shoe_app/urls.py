@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path, include, re_path
 from .views import *
 from rest_framework.routers import DefaultRouter
 from django.views.decorators.csrf import csrf_exempt
@@ -7,9 +7,12 @@ router = DefaultRouter()
 router.register(r'category', CategoryViewSet, basename='category')
 router.register(r'expenses', ExpenseViewSet, basename='expense')
 
-urlpatterns = router.urls
-urlpatterns += [
-    path('summary/', summary),
-    path('login/', log_in),
-    path('whoami/', whoami)
+urlpatterns = [
+    path('', index),
+    path('api/', include(router.urls)),
+    path('api/summary/', summary),
+    path('api/history/', history),
+    path('api/login/', log_in),
+    path('api/whoami/', whoami),
+    re_path(r'.*', index),
 ]

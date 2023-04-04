@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from rest_framework import viewsets
 from .models import *
 from .serializers import *
 from rest_framework.decorators import api_view
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
+import copy
+from datetime import date
 
+
+def index(request):
+    the_index = open('static/index.html')
+    return HttpResponse(the_index)
 
 class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
@@ -18,13 +24,12 @@ class ExpenseViewSet(viewsets.ModelViewSet):
     serializer_class = ExpenseSerializer
 
     def get_queryset(self):
-        return Expense.objects.filter(user=self.request.user)
+        return Expense.objects.filter(user=self.request.user, date__gte=date.today().replace(day=1))
     
 
 @api_view(['GET'])
 def summary(request):
-    print(request.user)
-    expenses = Expense.objects.filter(user=request.user)
+    expenses = Expense.objects.filter(user=request.user, date__gte=date.today().replace(day=1))
     budgets = Budget.objects.filter(user=request.user)
     # Create totals dictionary with all cats as keys
     totals = {}
@@ -39,6 +44,25 @@ def summary(request):
     print(totals)
     return JsonResponse(totals) 
 
+@api_view(['GET'])
+def history(request):
+    data = {}
+    expenses = Expense.objects.filter(user=request.user)
+    budgets = Budget.objects.filter(user=request.user)
+    monthly_values = {}
+    for budget in budgets:
+        cat = budget.category
+        monthly_values[cat.name.capitalize()] = [0, budget.limit]
+    monthly_values['Total'] = [0, 2000]
+    for expense in expenses:
+        if f"{expense.date.year}-{expense.date.month}" in data:
+            data[f"{expense.date.year}-{expense.date.month}"][expense.category.name.capitalize()][0] += float(expense.cost)
+            data[f"{expense.date.year}-{expense.date.month}"]['Total'][0] += float(expense.cost)
+        else:
+            data[f"{expense.date.year}-{expense.date.month}"] = copy.deepcopy(monthly_values)
+            data[f"{expense.date.year}-{expense.date.month}"][expense.category.name.capitalize()][0] += float(expense.cost)
+            data[f"{expense.date.year}-{expense.date.month}"]['Total'][0] += float(expense.cost)
+    return JsonResponse(data)
 
 @api_view(['POST'])
 def log_in(request):
