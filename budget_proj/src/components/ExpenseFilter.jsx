@@ -1,37 +1,36 @@
-import { useState } from "react";
+
 
 export default function ExpenseFilter(props) {
-  const [choice, setChoice] = useState(() => {
-    if (props.initial) {
-      return props.initial['by']
-    } else {
-      return null
-    }
-  });
+  // props - initial ({by, value}), handleFilter, cats
+  const passInput = (data) => {
+    props.handleFilter((prevState) => ({
+      ...prevState,
+      'value': data
+    }));
+  };
 
-  const handleFilter = (by, data) => {
+  const passBy = (by) => {
     props.handleFilter({
-      'by': by,
-      'word': data
-    })
+      'value': "",
+      'by': by
+    });
   };
 
   const createSearch = () => {
-    if (choice) {
-      console.log('choice')
-      if (choice==="name") {
-        return <input className="myform" type="text" placeholder="Search" value={props.initial && props.initial['word']} onChange={(e) => handleFilter('name', e.target.value)}/>
+    console.log(props.initial)
+    if (props.initial) {
+      if (props.initial.by==="name") {
+        return <input className="myform" type="text" placeholder="Search" value={props.initial && props.initial['value']} onChange={(e) => passInput(e.target.value)}/>
       } else {
         return (
-          <select className="myform" onChange={(e)=> handleFilter('cat', e.target.value)}>
-            <option value="-1">All</option>
+          <select className="myform" onChange={(e)=> passInput(e.target.value)}>
+            <option value="">All</option>
             {props.cats.map((choice) => <option value={choice.id}>{choice.name}</option>)}
           </select>
         )
       }
-    } else {
-      console.log('no choice')
-      return <input className="myform" type="text" placeholder="Search"/>
+    // } else {
+    //   return <input className="myform" type="text" placeholder="Search"/>
     }
   };
 
@@ -41,9 +40,9 @@ export default function ExpenseFilter(props) {
       <div>
         {createSearch()}
         <span className="p-2">
-          <input type="radio" name="filter" id="name" onChange={() => setChoice("name")}/>
+          <input type="radio" name="filter" id="name" onChange={() => passBy("name")} defaultChecked={props.initial.by==='name' }/>
           <label htmlFor="name">By name</label>
-          <input className="ms-2" type="radio" name="filter" id="cat" onChange={() => setChoice("cat")}/>
+          <input className="ms-2" type="radio" name="filter" id="cat" onChange={() => passBy("cat")} defaultChecked={props.initial.by==='cat'} />
           <label htmlFor="cat">By category</label>
         </span>
       </div>

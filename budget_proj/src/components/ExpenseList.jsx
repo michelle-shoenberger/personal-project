@@ -7,10 +7,8 @@ import ExpenseListItem from "../components/ExpenseListItem";
 
 
 export default function ExpenseList(props) {
-  // props - all, 
-  // props for filter - initial, handleFilter
-  // handleSelect
-  const [all, initial, handleFilter, handleSelect, expense] = useOutletContext();
+  
+  const {all, filter, cats} = useOutletContext();
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -31,11 +29,11 @@ export default function ExpenseList(props) {
 
   return (
     <>
-      <ExpenseFilter initial={initial} handleFilter={handleFilter} />
+      <ExpenseFilter initial={filter[0]} handleFilter={filter[1]} cats={cats} />
       <h1>Expenses List</h1>
       <p> Total expense: ${total}</p>
       <ListGroup>
-        {all && all.map((expense, index) => <ExpenseListItem key={index} expense={expense} handleSelect={handleSelect} />)}
+        {all.map((expense, index) => <ExpenseListItem key={index} expense={expense} />)}
       </ListGroup>
     </>
   )

@@ -10,9 +10,11 @@ questions
 
 - 2
   - 2.1 - routing, children for expense page
+  - 2.2 - filter persists, fixed state in expenses
+  - 
 
 
-- change routing to be children
+
 - look into separate context files - with state
 - make separate api call folder
 
@@ -129,14 +131,10 @@ questions
   - currentList - taking in a filter, is a part of the expenses state
     - passed to expense list as prop
     - setfunction in useEffect when filter changes
-  - filter
+  - filterObj
 
-- filter section
-  - pass setfunction for filter state
-- expenses list - pass 
-  - pass setfunction - onclick changes parent state
-- expense detail - pass expense object to display
-  - pass setfunction to change back
+- stretch - set up context for filter (obj, setFunction)
+
 
 #### Filter
 - features
@@ -191,8 +189,8 @@ questions
 
 - state 
   - expense - individual object
-    - passed by loader - axios call
-    - can I pass from expenses?
+    - passed by parent loader
+    - useState filters for id (param)
 - navigation - from expense list
 
 + list details
@@ -202,7 +200,6 @@ questions
   - stretch - image (api call)
 + nav - 
   + set listitem - onclick as Link
- 
 + route back to list - same list
   + Link
 

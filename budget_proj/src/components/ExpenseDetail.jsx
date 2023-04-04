@@ -1,6 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useLoaderData, useRouteLoaderData, NavLink, useParams } from "react-router-dom";
+
+import { useState } from "react";
+import {  useRouteLoaderData, NavLink, useParams, useOutletContext } from "react-router-dom";
 
 // can I pass the expense via the expense page outlet?
 // export async function ExpenseDetailLoader({params}) {
@@ -16,11 +16,10 @@ export function ExpenseDetail(props) {
   const {id} = useParams();
   const expenses = useRouteLoaderData('expenses')['expenses'];
   const [expense, setExpense] = useState(() => {
-    console.log(id)
-    console.log(expenses.find((expense) => expense.id == id))
+    console.log('detail', expenses.find((expense) => expense.id == id))
     return expenses.find((expense) => expense.id == id)
   });
-
+  const {cats} = useOutletContext();
 
   return (
     <>
@@ -31,7 +30,7 @@ export function ExpenseDetail(props) {
       <h2> {expense.item_name} </h2>
       <p> Cost: ${expense.cost} </p>
       <p> Date: {expense.date} </p>
-      <p> Category: {expense.category_name} </p>
+      <p> Category: {cats.find((cat) => cat.id === expense.category).name} </p>
       <p> Description: {expense.description} </p>
     </>
   )
