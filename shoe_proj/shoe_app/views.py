@@ -3,10 +3,28 @@ from rest_framework import viewsets
 from .models import *
 from .serializers import *
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
-import copy
 from datetime import date
+from rest_framework.parsers import JSONParser
+import copy, json, requests, os
+from dotenv import load_dotenv
+load_dotenv()
+
+
+# Currency conversion api
+def convert_currency(cost, type):
+    api_key = os.environ['curr_api']
+    base_url = "https://api.apilayer.com/exchangerates_data/convert"
+    type_to = 'USD'
+    endpoint = f"{base_url}?from={type}&to={type_to}&amount={cost}"
+    headers = {'apikey': api_key}
+    response = requests.get(endpoint, headers=headers)
+    responseJSON = response.json()
+    print(responseJSON)
+    return responseJSON['result']
 
 
 def index(request):
@@ -25,6 +43,43 @@ class ExpenseViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Expense.objects.filter(user=self.request.user, date__gte=date.today().replace(day=1))
+    
+    def create(self, request, *args, **kwargs):
+        print(request.data)
+        data = request.data.dict()
+        if data['type'] != 'USD':
+            new_cost = convert_currency(data['cost'], data['type'])
+            print(new_cost)
+            data['cost'] = round(new_cost*100)/100
+            print(data['cost'])
+            del data['type']
+        else:
+            del data['type']
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        
+        # print(request.data)
+        # item_name, cost, type, description, category_id = [request.data[k] for k in request.data.keys()]
+        # category_id = int(category_id)
+        # category = Category.objects.get(pk=category_id)
+        # if type == 'USD':
+        #     print(type)
+        # try:
+        #     new_expense = Expense.objects.create(item_name = item_name, cost = cost, description = description, category = category, user=request.user)
+        #     new_expense.save()
+        # # serializer = self.get_serializer(data=data)
+        # # serializer.is_valid(raise_exception=True)
+        # # self.perform_create(serializer)
+        # # headers = self.get_success_headers(serializer.data)
+        #     return JsonResponse({
+        #         'success': True
+        #     })
+        # except Exception as e:
+        #     print(e)
+        #     return JsonResponse({"success": False})
     
 
 @api_view(['GET'])

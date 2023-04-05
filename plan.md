@@ -14,14 +14,14 @@ questions
   - 2.2 - filter persists, fixed state in expenses
   - 2.3 - re-structure of useContext, appLoader added
 - 3 
-  - 3.1 - adding historicals
+  - 3.1 - adding historicals, updated build
+  - 3.2 - add currency options
 
 
-  
+- add currency api calls
 - make separate api call folder
 - add crud to expenses page - how to update in real time, with loader call
 - make everything for the current month
-- historical page
 - user pages
 
 
@@ -80,6 +80,7 @@ questions
 ### Home page
 - features
   + new expense form
+    - choose currency
   + summary
     + totals by all, and category
     + table 
@@ -109,6 +110,7 @@ questions
   + MyForm component to create
   - adding keys - am I rendering it right?
   + make categories field a category field
+  - add currency form field
 + submitting new object
   + return FormData
   + axios post
@@ -247,6 +249,8 @@ questions
   - description
     - allow Null
   - user
+  - custom get - pull for current user
+  - custom post - check currency exchange
 
 - User
   - categories - many to many

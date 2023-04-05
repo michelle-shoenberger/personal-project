@@ -15,7 +15,7 @@ export default function MyForm(props) {
         formFields.push(<textarea name={field} placeholder={field}></textarea>)
       } else if (props.model[field] === 'select' && props.choices) {
         formFields.push(
-          <select onChange={(e)=> setChoice(e.target.value)}>
+          <select value={choice} onChange={(e)=> setChoice(e.target.value)}>
             {props.choices.map((choice) => <option value={choice.id}>{choice.name}</option>)}
           </select>
         )
@@ -35,6 +35,7 @@ export default function MyForm(props) {
       console.log('select');
       formData.append('category', choice)
     }
+    console.log('form', formData)
     props.followOn(formData, props.endpoint)
   };
 

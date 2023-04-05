@@ -13,7 +13,7 @@ export default function LoginPage(props) {
   const [pwd, setPwd] = useState(null);
 
   const logIn = async () => {
-    let resp = await axios.post('http://127.0.0.1:8000/login/', {
+    let resp = await axios.post('http://127.0.0.1:8000/api/login/', {
       username: username,
       password: pwd
     })
