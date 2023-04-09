@@ -128,6 +128,7 @@ def log_in(request):
         if user.is_active:
             try:
                 return JsonResponse({
+                    'success': True,
                     'token': user.auth_token.key,
                     'id': user.pk,
                     'username': user.username
@@ -139,6 +140,24 @@ def log_in(request):
             return JsonResponse({'success': False, 'reason': 'user is not active'})
     else:
         return JsonResponse({'success': False, 'reason': 'user does not exist'})
+    
+@api_view(['POST'])
+def sign_up(request):
+    print(request.data)
+    try:
+        user = User.objects.create_user(username=request.data['username'], password=request.data['password'], email=request.data['email'])
+        # Log in
+        return JsonResponse({
+            'success': True,
+            'token': user.auth_token.key,
+            'id': user.pk,
+            'username': user.username
+        })
+    except Exception as e:
+        print(str(e))
+        return JsonResponse({'success':False, 'reason':'cannot create'})
+
+
     
 @api_view(['POST'])
 def whoami(request):

@@ -16,9 +16,10 @@ questions
 - 3 
   - 3.1 - adding historicals, updated build
   - 3.2 - add currency options
+  - 3.3 - add signup
 
 
-- add currency api calls
+
 - make separate api call folder
 - add crud to expenses page - how to update in real time, with loader call
 - make everything for the current month

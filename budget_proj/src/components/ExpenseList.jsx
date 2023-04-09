@@ -28,7 +28,6 @@ export default function ExpenseList(props) {
   return (
     <>
       <ExpenseFilter initial={filter[0]} handleFilter={filter[1]} cats={cats} />
-      <h1>Expenses List</h1>
       <p> Total expense: ${total}</p>
       <ListGroup>
         {all.map((expense, index) => <ExpenseListItem key={index} expense={expense} />)}

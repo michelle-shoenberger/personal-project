@@ -35,7 +35,6 @@ export default function ExpenseFilter(props) {
 
   return (
     <>
-      <h1>Filter section</h1>
       <div>
         {createSearch()}
         <span className="p-2">

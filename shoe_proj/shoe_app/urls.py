@@ -13,6 +13,7 @@ urlpatterns = [
     path('api/summary/', summary),
     path('api/history/', history),
     path('api/login/', log_in),
+    path('api/signup/', sign_up),
     path('api/whoami/', whoami),
     re_path(r'.*', index),
 ]

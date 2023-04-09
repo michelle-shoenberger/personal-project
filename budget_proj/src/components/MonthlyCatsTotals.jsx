@@ -1,11 +1,4 @@
-import {
-  Chart,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import { Chart, LinearScale, PointElement, LineElement, Tooltip, Legend} from 'chart.js';
 import { useState, useEffect } from 'react';
 import ScatterChart from './ScatterChart'
 
@@ -16,7 +9,7 @@ export default function MonthlyCatsTotals(props) {
   const [scatterOptions, setScatterOptions] = useState("")
 
   useEffect(() => {
-    const cats = Object.keys(Object.values(props.input)[0]) //array of categories
+    const cats = (props.input ? Object.keys(Object.values(props.input)[0]) : []) //array of categories
     console.log('datasets', cats)
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const data = {
@@ -30,7 +23,6 @@ export default function MonthlyCatsTotals(props) {
             } else {
               y = 0
             }
-            //console.log('y', y)
             return (
               {
                 x: month,

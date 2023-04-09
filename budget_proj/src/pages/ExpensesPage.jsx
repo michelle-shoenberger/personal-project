@@ -18,23 +18,24 @@ export async function expensesPageLoader() {
       return a > b ? -1 : a<b ? 1 : 0
     });
     console.log('expenses', data)
-    return {'expenses': data}
+    return data
   } catch {
     console.log('Error - unable to fetch expenses')
+    return null
   }
 };
 
 
 export function ExpensesPage(props) {
   const {cats} = useContext(UserContext);
-  const expenses = useLoaderData()['expenses'];
+  const expenses = useLoaderData();
 
-  const [currentList, setCurrentList] = useState(expenses)
+  const [currentList, setCurrentList] = useState(expenses ? expenses : [])
   const [filterObj, setFilterObj] = useState({'value': "", 'by': 'name'}) 
 
   useEffect(() => {
     console.log('filterObj', filterObj)
-    if (filterObj) {
+    if (filterObj['value']) {
       const filteredLst = expenses.filter((expense) => {
         if (filterObj.by === 'name') {
           return expense.item_name.toLowerCase().includes(filterObj.value.toLowerCase())
