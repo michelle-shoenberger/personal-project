@@ -5,6 +5,7 @@ questions
 - re-renders from props/context/loaders
   - no updating after initial render
 - can I move the state to the context file? and move the provider back to app?
+- everytime I get a CSRF error, I made a bad api call
 
 # Versions
 - 1
@@ -17,6 +18,7 @@ questions
   - 3.1 - adding historicals, updated build
   - 3.2 - add currency options
   - 3.3 - add signup
+  - 3.4 - expenses page update, update form, crud expenses
 
 
 

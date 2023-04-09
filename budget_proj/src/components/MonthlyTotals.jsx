@@ -41,7 +41,6 @@ export function MonthlyTotals(props) {
 
   return (
     <>
-      <h2> Monthly bar chart </h2>
       {barchartData && <BarChart chartData={barchartData} title="Monthly Totals" />}
     </>
   )

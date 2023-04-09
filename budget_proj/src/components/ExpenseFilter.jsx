@@ -1,7 +1,8 @@
-
+import {useNavigate} from 'react-router-dom'
 
 export default function ExpenseFilter(props) {
   // props - initial ({by, value}), handleFilter, cats
+  const navigate = useNavigate();
   const passInput = (data) => {
     props.handleFilter((prevState) => ({
       ...prevState,
@@ -33,8 +34,13 @@ export default function ExpenseFilter(props) {
     }
   };
 
+  const handleClick = () => {
+    navigate('create')
+  }
+
   return (
     <>
+      <button className="btn btn-success mb-3" onClick={handleClick}>Create a new expense</button>
       <div>
         {createSearch()}
         <span className="p-2">

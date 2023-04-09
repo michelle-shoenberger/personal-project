@@ -39,6 +39,7 @@ export const loginUser = async (username, pwd) => {
 
 export const persistUser = async () => {
   const token = Cookies.get('token')
+  const csrftoken = Cookies.get('csrftoken')
   if (token) {
     console.log('api call for whoami', token)
     axios.defaults.headers.common['Authorization'] = "Token " + token;

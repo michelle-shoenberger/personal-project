@@ -1,35 +1,19 @@
 import { useState, useEffect, useContext } from "react"
 import { Outlet, useLoaderData } from "react-router-dom";
 import {Helmet} from 'react-helmet'
-import axios from 'axios';
 import {UserContext} from "../context/UserContext";
+import { getExpenses } from "../api/expenseCalls";
 
 
 export async function expensesPageLoader() {
-  try{
-    const resp = await axios.get('http://127.0.0.1:8000/api/expenses/')
-    .catch((e) => {
-      console.log("getExpense error: " + e)
-    });
-    let data = resp.data
-    data.sort((a,b) => {
-      a = a.date.split('-').join('')
-      b = b.date.split('-').join('')
-      return a > b ? -1 : a<b ? 1 : 0
-    });
-    console.log('expenses', data)
-    return data
-  } catch {
-    console.log('Error - unable to fetch expenses')
-    return null
-  }
+  let resp = await getExpenses();
+  return resp
 };
-
 
 export function ExpensesPage(props) {
   const {cats} = useContext(UserContext);
-  const expenses = useLoaderData();
-
+  const initialexpenses = useLoaderData();
+  const [expenses, setExpenses] = useState(initialexpenses)
   const [currentList, setCurrentList] = useState(expenses ? expenses : [])
   const [filterObj, setFilterObj] = useState({'value': "", 'by': 'name'}) 
 
@@ -48,15 +32,17 @@ export function ExpensesPage(props) {
       });
       console.log(filteredLst)
       setCurrentList(filteredLst)
+    } else {
+      setCurrentList(expenses)
     }
-  }, [filterObj])
+  }, [filterObj, expenses])
 
   return (
     <>
       <Helmet>
         <title>Expenses</title>
       </Helmet>
-      <Outlet context={{'all': currentList, 'filter': [filterObj, setFilterObj], 'cats': cats}} />
+      <Outlet context={{'all': currentList, 'filter': [filterObj, setFilterObj], 'cats': cats, 'expenses': expenses, 'changeExpenses': setExpenses}} />
       
     </>
   )

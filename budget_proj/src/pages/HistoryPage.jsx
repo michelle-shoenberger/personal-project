@@ -28,7 +28,7 @@ export function HistoryPage() {
 
   return (
     <>
-      <h1> History Page</h1>
+      <h2>2023</h2>
       <MonthlyTotals input={history} year={2023}/>
       <MonthlyCatsTotals input={history} year={2023}/>
     </>

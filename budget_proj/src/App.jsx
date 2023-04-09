@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage.jsx';
 import { ExpensesPage, expensesPageLoader } from './pages/ExpensesPage.jsx';
 import ExpenseList from './components/ExpenseList';
 import {ExpenseDetail} from './components/ExpenseDetail';
+import ExpenseForm from './components/ExpenseForm';
 import LoginPage from './pages/LoginPage.jsx';
 import { HistoryPage, historyLoader } from './pages/HistoryPage';
 import {UserContextProvider} from './context/UserContext';
@@ -22,7 +23,7 @@ function App() {
       loader: appLoader,
       children: [
         {
-          path: "",
+          path: "/",
           element: <HomePage />,
         },
         {
@@ -38,8 +39,12 @@ function App() {
             {
               path: ":id",
               element: <ExpenseDetail />,
-            },
+            }
           ]
+        },
+        {
+          path: "/expenses/create",
+          element: <ExpenseForm />,
         },
         {
           path: "/history",
