@@ -80,7 +80,14 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         # except Exception as e:
         #     print(e)
         #     return JsonResponse({"success": False})
-    
+
+class BudgetViewSet(viewsets.ModelViewSet):
+    serializer_class = BudgetSerializer
+
+    def get_queryset(self):
+        print(self.request.user)
+        return Budget.objects.filter(user=self.request.user)
+
 
 @api_view(['GET'])
 def summary(request):
