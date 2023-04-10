@@ -19,19 +19,22 @@ questions
   - 3.2 - add currency options
   - 3.3 - add signup
   - 3.4 - expenses page update, update form, crud expenses
+  - 3.5 - added dates for expense forms
+  - 3.6
 
 
 
-- make separate api call folder
-- add crud to expenses page - how to update in real time, with loader call
-- make everything for the current month
-- user pages
+- what i need to have others use it
+  - set up new user - define categories and limits (limit to already made categories)
+  - 
+
+
+
 
 
 
 # To do list
-- Setup django api
-- Setup budget react front-end
+
 
 
 ## Front-end work
@@ -63,7 +66,7 @@ questions
 ### Login page
 - features
   + log in form
-  - sign up form - auto log in
+  + sign up form - auto log in
 
 + login in user
   + form
@@ -76,12 +79,12 @@ questions
 + complex context
   + setUser function
 + make it the screen until logged in
-- sign up 
-  - create form
-  - create path
++ sign up 
+  + create form
+  + create path
 
 ### Home page
-- features
++ features
   + new expense form
     - choose currency
   + summary
@@ -120,7 +123,6 @@ questions
   + return success
     + notification of success
     + navigate to expenses
-      - offer to route to expense detail page
 + summary
   + state - totals
   + table with summary totals
@@ -130,8 +132,8 @@ questions
   - add gyr indicator
 + make the summary page for current month
 - stretch - toggle - choose new or summary
-- change to only the budget status
-  - but keep pie chart
++ change to only the budget status
+  + but keep pie chart
 
 ### Expense page
 - control expenses state
@@ -197,10 +199,10 @@ questions
 
 #### Expense detail 
 - features
-  - list all information on expense
-  - stretch - present form for updating 
-    - pre-fill with current information
-  - route back to currentList
+  + list all information on expense
+  + stretch - present form for updating 
+    + pre-fill with current information
+  + route back to currentList
 
 - state 
   - expense - individual object
@@ -210,8 +212,8 @@ questions
 
 + list details
   + simple list
-  - pass down categories
-  - stretch - form
+  + pass down categories
+  + stretch - form
   - stretch - image (api call)
 + nav - 
   + set listitem - onclick as Link
@@ -223,14 +225,14 @@ questions
 - features
 
 
-- create page
++ create page
   + add to nav
   + basic start
   + useEffect that calls endpoint
   - next
-- create monthly totals chart
++ create monthly totals chart
 - create total savings 
-- create montly by cat scatter chart
++ create montly by cat scatter chart
 
 
 ## Back-end work

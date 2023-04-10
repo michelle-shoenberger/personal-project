@@ -32,7 +32,7 @@ export default function HomePage(props) {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <h2 className="mt-5"> Create new expense: </h2>
+      <h2 className="mt-5 text-center"> Create new expense: </h2>
       <ExpenseForm />
       <Summary />
     </>
