@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const getProfile = async () => {
-  const resp = await axios.get('http://127.0.0.1:8000/api/budget/')
+  const resp = await axios.get('/api/budget/')
     .catch((e) => {
       console.log("getProfile error: " + e)
   });
@@ -18,7 +18,7 @@ export const getProfile = async () => {
 }
 
 export const createBudget = async (data) => {
-  let resp = await axios.post('http://127.0.0.1:8000/api/budget/', data)
+  let resp = await axios.post('/api/budget/', data)
   .catch((e) => {
     console.log("createBudget error: " + e)
   });
@@ -27,7 +27,7 @@ export const createBudget = async (data) => {
 
 export const updateBudget = async (data, id) => {
   // formdata
-  let resp = await axios.put(`http://127.0.0.1:8000/api/budget/${id}/`, data)
+  let resp = await axios.put(`/api/budget/${id}/`, data)
       .catch((e) => {
         console.log("updateBudget error: " + e)
       });

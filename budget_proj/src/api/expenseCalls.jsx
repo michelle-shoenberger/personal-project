@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const getExpenses = async () => {
   try{
-    const resp = await axios.get('http://127.0.0.1:8000/api/expenses/')
+    const resp = await axios.get('/api/expenses/')
     .catch((e) => {
       console.log("getExpense error: " + e)
     });
@@ -22,7 +22,7 @@ export const getExpenses = async () => {
 
 export const createExpense = async (data) => {
   // formdata
-  let resp = await axios.post('http://127.0.0.1:8000/api/expenses/', data)
+  let resp = await axios.post('/api/expenses/', data)
       .catch((e) => {
         console.log("createExpense error: " + e)
       });
@@ -31,7 +31,7 @@ export const createExpense = async (data) => {
 
 export const updateExpense = async (data) => {
   // formdata
-  let resp = await axios.put(`http://127.0.0.1:8000/api/expenses/${data.get('id')}/`, data)
+  let resp = await axios.put(`/api/expenses/${data.get('id')}/`, data)
       .catch((e) => {
         console.log("updateExpense error: " + e)
       });
@@ -40,7 +40,7 @@ export const updateExpense = async (data) => {
 
 export const deleteExpense = async (id) => {
   // 
-  let resp = await axios.delete(`http://127.0.0.1:8000/api/expenses/${id}/`)
+  let resp = await axios.delete(`/api/expenses/${id}/`)
       .catch((e) => {
         console.log("deleteExpense error: " + e)
       });

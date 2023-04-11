@@ -13,7 +13,7 @@ export default function Summary(props) {
   useEffect(() => {
     const getSummary = async () => {
       try {
-        const resp = await axios.get('http://127.0.0.1:8000/api/summary/')
+        const resp = await axios.get('/api/summary/')
           .catch((e) => {
             console.log("getSummary error: " + e)
           });

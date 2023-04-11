@@ -2,7 +2,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie';
 
 export const createUser = async (username, pwd, email) => {
-  let resp = await axios.post('http://127.0.0.1:8000/api/signup/', {
+  let resp = await axios.post('/api/signup/', {
     username: username,
     password: pwd,
     email: email
@@ -21,7 +21,7 @@ export const createUser = async (username, pwd, email) => {
 };
 
 export const loginUser = async (username, pwd) => {
-  let resp = await axios.post('http://127.0.0.1:8000/api/login/', {
+  let resp = await axios.post('/api/login/', {
     username: username,
     password: pwd
   })
@@ -43,7 +43,7 @@ export const persistUser = async () => {
   if (token) {
     console.log('api call for whoami', token)
     axios.defaults.headers.common['Authorization'] = "Token " + token;
-    const resp = await axios.post('http://127.0.0.1:8000/api/whoami/')
+    const resp = await axios.post('/api/whoami/')
       .catch((e) => {
         console.log("Usercheck error: " + e)
       });
@@ -57,7 +57,7 @@ export const persistUser = async () => {
 };
 
 export const updateUserBudget = async (amount) => {
-  let resp = await axios.post('http://127.0.0.1:8000/api/total/', {
+  let resp = await axios.post('/api/total/', {
     amount: amount
   })
     .catch((e) => {

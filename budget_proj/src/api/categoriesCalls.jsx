@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const getAllCategories = async () => {
-  const resp = await axios.get('http://127.0.0.1:8000/api/category/')
+  const resp = await axios.get('/api/category/')
     .catch((e) => {
       console.log("getCategories error: " + e)
   });
@@ -22,7 +22,7 @@ export const getAllCategories = async () => {
 };
 
 export const createCategory = async (data) => {
-  let resp = await axios.post('http://127.0.0.1:8000/api/category/', data)
+  let resp = await axios.post('/api/category/', data)
   .catch((e) => {
     console.log("createCategory error: " + e)
   });
@@ -31,7 +31,7 @@ export const createCategory = async (data) => {
 
 export const updateCategory = async (data, id) => {
   // formdata
-  let resp = await axios.put(`http://127.0.0.1:8000/api/category/${id}/`, data)
+  let resp = await axios.put(`/api/category/${id}/`, data)
       .catch((e) => {
         console.log("updateCategory error: " + e)
       });
@@ -40,7 +40,7 @@ export const updateCategory = async (data, id) => {
 
 export const deleteCategory = async (id) => {
   // 
-  let resp = await axios.delete(`http://127.0.0.1:8000/api/category/${id}/`)
+  let resp = await axios.delete(`/api/category/${id}/`)
       .catch((e) => {
         console.log("deleteCategory error: " + e)
       });

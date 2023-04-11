@@ -7,7 +7,7 @@ import MonthlyCatsTotals from "../components/MonthlyCatsTotals";
 
 export async function historyLoader() {
   try{
-    const resp = await axios.get('http://127.0.0.1:8000/api/history/')
+    const resp = await axios.get('/api/history/')
     .catch((e) => {
       console.log("getHistory error: " + e)
     });
