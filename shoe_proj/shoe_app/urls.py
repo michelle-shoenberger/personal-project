@@ -11,6 +11,7 @@ router.register(r'budget', BudgetViewSet, basename='budget')
 urlpatterns = [
     path('', index),
     path('api/', include(router.urls)),
+    path('api/total/', update_total_budget),
     path('api/summary/', summary),
     path('api/history/', history),
     path('api/login/', log_in),

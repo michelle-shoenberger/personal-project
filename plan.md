@@ -20,7 +20,9 @@ questions
   - 3.3 - add signup
   - 3.4 - expenses page update, update form, crud expenses
   - 3.5 - added dates for expense forms
-  - 3.6
+  - 3.6 - profile page added
+  - 3.7 - 
+- 4
 
 
 

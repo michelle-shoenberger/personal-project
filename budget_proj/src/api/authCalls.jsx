@@ -55,3 +55,13 @@ export const persistUser = async () => {
     return null
   }
 };
+
+export const updateUserBudget = async (amount) => {
+  let resp = await axios.post('http://127.0.0.1:8000/api/total/', {
+    amount: amount
+  })
+    .catch((e) => {
+      console.log("Update user error: " + e)
+    });
+  return resp
+}

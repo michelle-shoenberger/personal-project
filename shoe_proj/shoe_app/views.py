@@ -137,6 +137,19 @@ class BudgetViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.data)
 
+@api_view(['POST'])
+def update_total_budget(request):
+    try:
+        user = request.user
+        print('user', user)
+        user.budget_total = request.data['amount']
+        user.save()
+        print('update', user.budget_total)
+        return JsonResponse({'success': True})
+    except:
+        return JsonResponse({'success': False})
+
+
 @api_view(['GET'])
 def summary(request):
     expenses = Expense.objects.filter(user=request.user, date__gte=date.today().replace(day=1))
@@ -186,7 +199,8 @@ def log_in(request):
                     'success': True,
                     'token': user.auth_token.key,
                     'id': user.pk,
-                    'username': user.username
+                    'username': user.username,
+                    'budget': user.budget_total
                 })
             except Exception as e:
                 print(str(e))
@@ -206,7 +220,8 @@ def sign_up(request):
             'success': True,
             'token': user.auth_token.key,
             'id': user.pk,
-            'username': user.username
+            'username': user.username,
+            'budget': user.budget_total
         })
     except Exception as e:
         print(str(e))
@@ -221,6 +236,7 @@ def whoami(request):
         return JsonResponse({
                         'token': request.user.auth_token.key,
                         'id': request.user.pk,
-                        'username': request.user.username
+                        'username': request.user.username,
+                        'budget': request.user.budget_total
                     })
     return JsonResponse({'success': False}) 

@@ -49,7 +49,7 @@ export default function CategoryForm({category, limit, id}) {
         <Form.Label>$</Form.Label>
         <input type='float' name='limit' value={amount} onChange={(e)=> setAmount(e.target.value)} />
         {category 
-          ? <div><button type='submit' className='btn btn-primary' onClick={handleUpdate}>Update</button><button type='submit' className='btn btn-primary' onClick={handleDelete}>Delete</button></div>
+          ? <div><button type='submit' className='btn btn-primary' onClick={handleUpdate}>Update</button><button type='submit' className='btn btn-danger' onClick={handleDelete}>Delete</button></div>
           : <button type='submit' className='btn btn-primary' onClick={handleCreate} >Create</button>
         }
       </Form>
