@@ -7,6 +7,9 @@ export const getAllCategories = async () => {
   });
   console.log('catcall', resp)
   if (resp) {
+    if (resp.data.length == 0) {
+      return null
+    }
     let data = resp.data
     data.sort((a,b) => {
       return a.name > b.name ? 1 : a.name<b.name ? -1 : 0
@@ -16,4 +19,31 @@ export const getAllCategories = async () => {
     console.log("getCategories error")
     return null
   }
-}
+};
+
+export const createCategory = async (data) => {
+  let resp = await axios.post('http://127.0.0.1:8000/api/category/', data)
+  .catch((e) => {
+    console.log("createCategory error: " + e)
+  });
+  return resp
+};
+
+export const updateCategory = async (data, id) => {
+  // formdata
+  let resp = await axios.put(`http://127.0.0.1:8000/api/category/${id}/`, data)
+      .catch((e) => {
+        console.log("updateCategory error: " + e)
+      });
+  return resp
+};
+
+export const deleteCategory = async (id) => {
+  // 
+  let resp = await axios.delete(`http://127.0.0.1:8000/api/category/${id}/`)
+      .catch((e) => {
+        console.log("deleteCategory error: " + e)
+      });
+  console.log(resp)
+  return resp
+};

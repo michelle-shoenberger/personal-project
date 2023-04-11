@@ -12,6 +12,9 @@ export async function historyLoader() {
       console.log("getHistory error: " + e)
     });
     console.log('api-history', resp.data)
+    if (resp.data.length == 0) {
+      return null
+    }
     return resp.data
   } catch {
     console.log('Error - unable to fetch history')

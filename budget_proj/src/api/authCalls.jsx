@@ -33,7 +33,7 @@ export const loginUser = async (username, pwd) => {
     axios.defaults.headers.common['Authorization'] = "Token " + resp.data.token;
     return resp.data
   } else {
-    return False
+    return false
   }
 }
 

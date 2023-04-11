@@ -6,7 +6,7 @@ import Summary from '../components/Summary';
 import { UserContext } from '../context/UserContext';
 
 export default function HomePage(props) {
-  const {cats} = useContext(UserContext);
+  const {user, cats} = useContext(UserContext);
   const navigate = useNavigate();
 
   // const handleSubmit = async (data) => {
@@ -33,7 +33,7 @@ export default function HomePage(props) {
         <title>Home</title>
       </Helmet>
       <h2 className="mt-5 text-center"> Create new expense: </h2>
-      <ExpenseForm />
+      {cats && <ExpenseForm />}
       <Summary />
     </>
   )

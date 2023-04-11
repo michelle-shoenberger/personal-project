@@ -18,7 +18,7 @@ export default function AppNav() {
     const makeButtons = () => {
         if (user) {
             return ([
-                <Button as={NavLink} to="/" variant="primary" className="ms-5 order-lg-3">Welcome, {user.username}</Button>, 
+                <Button as={NavLink} to="/profile" variant="primary" className="ms-5 order-lg-3">Welcome, {user.username}</Button>, 
                 <Button as={NavLink} to="/" variant="danger" className="ms-5 order-lg-3" onClick={logOff}>Log out</Button>
             ])
         } else {

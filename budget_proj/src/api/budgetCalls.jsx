@@ -5,7 +5,6 @@ export const getProfile = async () => {
     .catch((e) => {
       console.log("getProfile error: " + e)
   });
-  console.log('budget', resp)
   if (resp) {
     let data = resp.data
     // data.sort((a,b) => {
@@ -17,3 +16,20 @@ export const getProfile = async () => {
     return null
   }
 }
+
+export const createBudget = async (data) => {
+  let resp = await axios.post('http://127.0.0.1:8000/api/budget/', data)
+  .catch((e) => {
+    console.log("createBudget error: " + e)
+  });
+  return resp
+}
+
+export const updateBudget = async (data, id) => {
+  // formdata
+  let resp = await axios.put(`http://127.0.0.1:8000/api/budget/${id}/`, data)
+      .catch((e) => {
+        console.log("updateBudget error: " + e)
+      });
+  return resp
+};

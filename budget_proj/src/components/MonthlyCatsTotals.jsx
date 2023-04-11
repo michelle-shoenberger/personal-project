@@ -1,5 +1,6 @@
 import { Chart, LinearScale, PointElement, LineElement, Tooltip, Legend} from 'chart.js';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ScatterChart from './ScatterChart'
 
 Chart.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
@@ -7,8 +8,10 @@ Chart.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 export default function MonthlyCatsTotals(props) {
   const [scatterchartData, setScatterChartData] = useState("")
   const [scatterOptions, setScatterOptions] = useState("")
+  const navigate = useNavigate();
 
   useEffect(() => {
+    console.log('input', props.input)
     const cats = (props.input ? Object.keys(Object.values(props.input)[0]) : []) //array of categories
     console.log('datasets', cats)
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
