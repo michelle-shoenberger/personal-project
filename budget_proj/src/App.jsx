@@ -11,6 +11,7 @@ import {ExpenseDetail} from './components/ExpenseDetail';
 import ExpenseForm from './components/ExpenseForm';
 import LoginPage from './pages/LoginPage.jsx';
 import { HistoryPage, historyLoader } from './pages/HistoryPage';
+import { ProfilePage, profileLoader } from './pages/ProfilePage';
 import {UserContextProvider} from './context/UserContext';
 
 
@@ -54,6 +55,11 @@ function App() {
         {
           path: "/login",
           element: <LoginPage />,
+        },
+        {
+          path: "/profile",
+          element: <ProfilePage />,
+          loader: profileLoader
         },
         {
           path: "*",

@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 router = DefaultRouter()
 router.register(r'category', CategoryViewSet, basename='category')
 router.register(r'expenses', ExpenseViewSet, basename='expense')
+router.register(r'budget', BudgetViewSet, basename='budget')
 
 urlpatterns = [
     path('', index),
