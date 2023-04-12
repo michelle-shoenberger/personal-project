@@ -1,4 +1,25 @@
 # Budgeting App
+- update - added schema and diagram, in views.py you can see the currency conversion api calls, I have my own user class, and the react app is set to build into the django
+- I've managed to get it on AWS but I'm already trying to turn it off because I don't understand the pay tiers.  I can get it up and running if that helps looking at it
+
+## Versions
+- 1
+
+- 2
+  - 2.1 - routing, children for expense page
+  - 2.2 - filter persists, fixed state in expenses
+  - 2.3 - re-structure of useContext, appLoader added
+- 3 
+  - 3.1 - adding historicals, updated build
+  - 3.2 - add currency options
+  - 3.3 - add signup
+  - 3.4 - expenses page update, update form, crud expenses
+  - 3.5 - added dates for expense forms
+  - 3.6 - profile page added
+  - 3.7 - total budget added
+- 4 - first deployed version
+  - 4.1 - fixed api calls
+
 
 ## Purpose
 All information will require a login, providing viewing and changing data associated with the user.
