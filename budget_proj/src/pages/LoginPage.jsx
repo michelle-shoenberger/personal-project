@@ -28,7 +28,7 @@ export default function LoginPage(props) {
     console.log(resp)
     if (resp) {
       setUser(resp)
-      navigate('/')
+      navigate('/profile')
     } else {
       alert("Sign up failed. Please try again")
     }
