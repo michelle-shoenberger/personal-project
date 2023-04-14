@@ -11,7 +11,7 @@ export const getProfile = async () => {
       .catch((e) => {
         console.log("getProfile error: " + e)
       });
-    return {'budgets': data, 'quotedata': quotedata}
+    return {'budgets': data, 'quotedata': quotedata.data}
   } else {
     console.log("getProfile error")
     return null
