@@ -26,6 +26,16 @@ def convert_currency(cost, type):
     print(responseJSON)
     return responseJSON['result']
 
+# Quote api
+@api_view(['GET'])
+def get_quote(request):
+    response = requests.get('https://api.quotable.io/random')
+    responseJSON = response.json()
+    return JsonResponse({
+        'author': responseJSON['author'],
+        'quote': responseJSON['content']
+    })
+
 
 def index(request):
     the_index = open('static/index.html')

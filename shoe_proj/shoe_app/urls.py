@@ -17,5 +17,6 @@ urlpatterns = [
     path('api/login/', log_in),
     path('api/signup/', sign_up),
     path('api/whoami/', whoami),
+    path('api/quote/', get_quote),
     re_path(r'.*', index),
 ]
