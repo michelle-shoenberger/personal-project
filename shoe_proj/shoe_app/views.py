@@ -195,6 +195,7 @@ def history(request):
             data[f"{expense.date.year}-{expense.date.month}"] = copy.deepcopy(monthly_values)
             data[f"{expense.date.year}-{expense.date.month}"][expense.category.name.capitalize()][0] += float(expense.cost)
             data[f"{expense.date.year}-{expense.date.month}"]['Total'][0] += float(expense.cost)
+    print(data)
     return JsonResponse(data)
 
 @api_view(['POST'])

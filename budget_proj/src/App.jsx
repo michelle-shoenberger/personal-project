@@ -20,6 +20,10 @@ function App() {
 
   const router = createBrowserRouter([
     {
+      path: "/login",
+      element: <LoginPage />,
+    },
+    {
       element: <Layout />,
       loader: appLoader,
       children: [
@@ -51,10 +55,6 @@ function App() {
           path: "/history",
           element: <HistoryPage />,
           loader: historyLoader
-        },
-        {
-          path: "/login",
-          element: <LoginPage />,
         },
         {
           path: "/profile",

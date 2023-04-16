@@ -20,7 +20,10 @@
 - 4 - first deployed version
   - 4.1 - fixed api calls
   - 4.2 - updated signup call
-  - 4.3 - added quotes
+  - 4.3 - added quotes api call
+- 5 - update to user sign up process
+  - 5.1 - redesign of login, auto generate initial profile and fix logout
+  - 
 
 
 ## Purpose
