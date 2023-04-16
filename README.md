@@ -19,6 +19,8 @@
   - 3.7 - total budget added
 - 4 - first deployed version
   - 4.1 - fixed api calls
+  - 4.2 - updated signup call
+  - 4.3 - added quotes
 
 
 ## Purpose
