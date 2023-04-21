@@ -1,6 +1,5 @@
-# Budgeting App
-- update - added schema and diagram, in views.py you can see the currency conversion api calls, I have my own user class, and the react app is set to build into the django
-- I've managed to get it on AWS but I'm already trying to turn it off because I don't understand the pay tiers.  I can get it up and running if that helps looking at it
+# Beyond Budget
+
 
 ## Versions
 - 1
@@ -26,14 +25,18 @@
   - 
 
 
-## Purpose
-All information will require a login, providing viewing and changing data associated with the user.
+## How to use 
+This app offers versatility in tracking expenses and visualizing a budget.  
 
-Users will be able to add expenses and view/change all in Expenses page
+The user can set their own categories on the profile page.  With each category, the user can set a unique limit.  Setting the total budget allows the comparison to the sum of all expenses for the month.
 
-The home page will include a summary of expenses and compare them to a user designated budget for all categories.
+The homepage consists of a short-cut to add a new expense and a snapshot of the progress through this month's budget.  This progress is visualized through a tabular view of each category's totals, a bar chart displaying the total expenses in each category, and a pie chart representing the percentage of total expense for each category.
 
-## API's
+The expenses page lets you filter all expenses by name or category.  Clicking on an expense sends you to the detail page where all the details can be edited and updated.
+
+Finally the history page tracks expenses by month for the last year.  The monthly totals show overall expenses per month.  The scatter plot below breaks this figure out by category.  To see details at each point, hover over the dot with your mouse.
+
+## External API's
 Beyond the site database, the website will incorporate the option to put the cost of expenses in other currency.  Then the backend will call the Currency conversion api to convert to USD.  Everything will be stored and displayed in USD.
 
 For a second API, I haven't found anything terribly pertinent.  The Noun API can be used to add a picture to expenses based off the name or category.
