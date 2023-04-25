@@ -68,12 +68,3 @@ export default function ExpenseUpdateForm({current, expenses, changeExpenses}) {
   )
 }
 
-{/* <form className="myform d-flex flex-column align-items-center" onSubmit={(e) => handleSubmit(e)}>
-<label>Name: <input type='text' name='item_name' placeholder='Name' value={name} onChange={(e)=>setName(e.target.value)}/></label>
-<input type='float' name='cost' placeholder='Cost' value={cost} onChange={(e)=>setCost(e.target.value)}/>
-<select value={cat} onChange={(e)=> setCat(e.target.value)}>
-  {cats && cats.map((choice) => <option value={choice.id}>{choice.name}</option>)}
-</select>
-<textarea name='description' placeholder='Description' value={des} onChange={(e)=>setDes(e.target.value)}></textarea>
-<button type="submit" className="btn btn-primary">Submit</button>
-</form> */}
