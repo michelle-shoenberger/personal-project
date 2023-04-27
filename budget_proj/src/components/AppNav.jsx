@@ -34,7 +34,7 @@ export default function AppNav() {
                 {makeButtons()}
                 <Navbar.Collapse>
                     <Nav className="me-auto">
-                        <Nav.Link eventKey="1"  className="text-start " as={NavLink} to="/">Home</Nav.Link>
+                        <Navbar.Brand eventKey="1"  className="text-start " as={NavLink} to="/">Beyond Budget</Navbar.Brand>
                         <Nav.Link eventKey="2"  className="text-start" as={NavLink} to="/expenses" >Expenses</Nav.Link>
                         <Nav.Link eventKey="3"  className="text-start" as={NavLink} to="/history" >History</Nav.Link>
                     </Nav>

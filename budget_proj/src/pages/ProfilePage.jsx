@@ -27,8 +27,8 @@ export function ProfilePage() {
       <h2 className="mt-3">Add a category:</h2>
       <CategoryForm />
       <hr className="mt-5"/>
-      <p>{quotedata.quote}</p>
-      <p>-{quotedata.author}</p>
+      <p className="text-bold text-center">{quotedata.quote}</p>
+      <p className="text-bold text-center">-{quotedata.author}</p>
     </>
   )
 }

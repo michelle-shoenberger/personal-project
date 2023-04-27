@@ -52,7 +52,6 @@ export default function BudgetSummary(props) {
           {
             label: "Total expenditures",
             data: cats.map((cat) => {
-              console.log(cat)
               console.log(tableData.filter((row) => row.cat == cat))
               return tableData.filter((row) => row.cat == cat)[0].percent
             }),
@@ -119,10 +118,10 @@ export default function BudgetSummary(props) {
       </div>
       <Row>
         <Col>
-          {chartData && <BarChart chartData={chartData} title="Budget progress" />}
+          {chartData && <BarChart chartData={chartData} title="Budget progress in %" />}
         </Col>
         <Col>
-          {chartData && <PieChart chartData={chartData} />}
+          {piechartData && <PieChart chartData={piechartData} />}
         </Col>
       </Row>
     </>

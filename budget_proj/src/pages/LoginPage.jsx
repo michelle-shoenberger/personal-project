@@ -49,7 +49,7 @@ export default function LoginPage(props) {
         <Button className="mt-2" onClick={logIn} >Login</Button>
       </Form>
       <p className="mt-5 text-center bg-success text-light display-1">Don't have an account?</p>
-      <h1 className="text-center">Step 1: Sign up!</h1>
+      <h1 className="text-center">Sign up!</h1>
       <Row>
         <Col md={6}>
           <Image fluid md={6} src="https://images.unsplash.com/photo-1460467820054-c87ab43e9b59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=767&q=80" alt="welcome"/>

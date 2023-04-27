@@ -3,7 +3,6 @@
 
 ## Versions
 - 1
-
 - 2
   - 2.1 - routing, children for expense page
   - 2.2 - filter persists, fixed state in expenses
@@ -22,7 +21,8 @@
   - 4.3 - added quotes api call
 - 5 - update to user sign up process
   - 5.1 - redesign of login, auto generate initial profile and fix logout
-  - 
+  - 5.2 - restyle of home page
+  - 5.3 - 
 
 
 ## How to use 
