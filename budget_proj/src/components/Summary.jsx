@@ -24,9 +24,6 @@ export default function Summary(props) {
       }
     }; 
     getSummary();
-    
-    
-    
   }, []);
 
   useEffect(() => {
@@ -49,28 +46,9 @@ export default function Summary(props) {
     setChartData(data)
   }, [summary])
 
-  // const showSummary = () => {
-  //   const totals = Object.keys(summary).map((cat, idx) => {
-  //     if (cat==='Total') {
-  //       return (
-  //         <div key={idx} className="row border-top border-dark">
-  //           <div className='col-6'>{cat}:</div>
-  //           <div className='col-6'>${Math.round(summary[cat][0] *100)/100}</div>
-  //         </div>
-  //       )
-  //     }
-  //     return (
-  //       <div key={idx} className="row">
-  //         <div className='col-6'>{cat}:</div>
-  //         <div className='col-6'>${Math.round(summary[cat][0] *100)/100}</div>
-  //       </div>
-  //     )
-  //   })
-  //   return totals
-  // }
-
   return (
     <>
+      <h2>Budget status</h2>
       <BudgetSummary summary={summary}/>
       {chartData && <PieChart chartData={chartData} />}
     </>

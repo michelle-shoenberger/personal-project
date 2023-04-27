@@ -1,3 +1,9 @@
 .main {
   margin-top: 8vh;
 }
+
+.table {
+  background-color: oldlace;
+  border: solid green 3px;
+  padding: 0;
+}

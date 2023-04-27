@@ -1,15 +1,11 @@
 import { useState, useEffect, useContext } from "react"
 import {useNavigate} from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap';
 import { UserContext } from '../context/UserContext';
 import { createExpense } from "../api/expenseCalls";
 
 
 export default function ExpenseForm() {
-  // const getTodaysDate = () => {
-  //   let d = new Date();
-  //   console.log(d)
-  //   return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
-  // }
 
   const types = ['USD', 'EUR', 'CAD']
   const {cats} = useContext(UserContext);
@@ -19,16 +15,13 @@ export default function ExpenseForm() {
   const [cat, setCat] = useState(cats ? cats[0].id : "");
   const [date, setDate] = useState("");
   const [des, setDes] = useState("");
-  
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCat(cats ? cats[0].id : "")
   }, [cats])
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
-    console.log(date)
     console.log('submit')
     e.preventDefault()
     let formData = new FormData(e.target)
@@ -44,18 +37,36 @@ export default function ExpenseForm() {
   }
 
   return (
-    <form className="myform d-flex flex-column align-items-center" onSubmit={(e) => handleSubmit(e)}>
-      <input type='text' name='item_name' placeholder='Name' value={name} onChange={(e)=>setName(e.target.value)}/>
-      <input type='float' name='cost' placeholder='Cost' value={cost} onChange={(e)=>[console.log(date),setCost(e.target.value)]}/>
-      <input type="date" name='date' value={date} onChange={(e)=>setDate(e.target.value)} />
-      <select value={type} name='type' onChange={(e)=> setType(e.target.value)}>
-        {types && types.map((t) => <option value={t}>{t}</option>)}
-      </select>
-      <select value={cat} name='category' onChange={(e)=> setCat(e.target.value)}>
-        {cats && cats.map((choice) => <option value={choice.id}>{choice.name}</option>)}
-      </select>
-      <textarea name='description' placeholder='Description' value={des} onChange={(e)=>setDes(e.target.value)}></textarea>
-      <button type="submit" className="btn btn-primary">Submit</button>
-    </form>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group controlID="item_name">
+        <Form.Label>Name:</Form.Label>
+        <Form.Control type='text' name='item_name' placeholder='Name' value={name} onChange={(e)=>setName(e.target.value)} />
+      </Form.Group>
+      <Form.Group controlID="cost">
+        <Form.Label>Cost: </Form.Label>
+        <Form.Control type='float' name='cost' placeholder='Cost' value={cost} onChange={(e)=>setCost(e.target.value)} />
+      </Form.Group>
+      <Form.Group controlID="currency">
+        <Form.Label>Currency type:</Form.Label>
+        <Form.Select value={type} name="type" onChange={(e)=> setType(e.target.value)}>
+          {types && types.map((t, i) => <option value={t} key={i}>{t}</option>)}
+        </Form.Select>
+      </Form.Group>
+      <Form.Group controlID="date">
+        <Form.Label>Date:</Form.Label>
+        <Form.Control type='date' name='date' value={date} onChange={(e)=>setDate(e.target.value)} />
+      </Form.Group>
+      <Form.Group controlID="cat">
+        <Form.Label>Category:</Form.Label>
+        <Form.Select value={cat} name="category" onChange={(e)=> setCat(e.target.value)}>
+          {cats && cats.map((choice) => <option value={choice.id}>{choice.name}</option>)}
+        </Form.Select>
+      </Form.Group>
+      <Form.Group controlID="description">
+        <Form.Label>Description:</Form.Label>
+        <Form.Control as="textarea" rows={3}name='description' placeholder='Description' value={des} onChange={(e)=>setDes(e.target.value)} />
+      </Form.Group>
+      <Button type="submit" className="mt-2" variant="success">Submit</Button>
+    </Form>
   )
 }

@@ -34,18 +34,10 @@ export default function AppNav() {
                 {makeButtons()}
                 <Navbar.Collapse>
                     <Nav className="me-auto">
-                        <Nav.Link eventKey="1"  className="text-start " as={NavLink} to="/">Budget</Nav.Link>
+                        <Nav.Link eventKey="1"  className="text-start " as={NavLink} to="/">Home</Nav.Link>
                         <Nav.Link eventKey="2"  className="text-start" as={NavLink} to="/expenses" >Expenses</Nav.Link>
                         <Nav.Link eventKey="3"  className="text-start" as={NavLink} to="/history" >History</Nav.Link>
                     </Nav>
-                    <Form className="d-flex">
-                        <Form.Control 
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search" />
-                        <Button variant="secondary">Search</Button>
-                    </Form>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
