@@ -22,7 +22,7 @@
 - 5 - update to user sign up process
   - 5.1 - redesign of login, auto generate initial profile and fix logout
   - 5.2 - restyle of home page
-  - 5.3 - 
+  - 5.3 - styling updates, fixed history for new users
 
 
 ## How to use 

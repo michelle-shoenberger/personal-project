@@ -27,7 +27,7 @@ class User(AbstractUser):
             cat2 =Category.objects.create(name="Fun", user=instance)
             Budget.objects.create(category=cat2, user=instance, limit=200)
             cat3 = Category.objects.create(name="Car", user=instance)
-            Budget.objects.create(category=cat1, user=instance, limit=200)
+            Budget.objects.create(category=cat3, user=instance, limit=200)
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
