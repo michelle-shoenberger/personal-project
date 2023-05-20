@@ -1,5 +1,5 @@
 import {Navbar, Nav, Container, Form, Button} from 'react-bootstrap';
-import {NavLink } from 'react-router-dom';
+import {NavLink, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
@@ -7,13 +7,14 @@ import {UserContext} from '../context/UserContext';
 
 export default function AppNav() {
     const {user, setUser} = useContext(UserContext);
+    const navigate = useNavigate();
 
     const logOff = () => {
         console.log('log-off')
         Cookies.remove('token')
         delete axios.defaults.headers.common["Authorization"]
         setUser(null)
-        location.reload()
+        navigate("/login")
     }
   
     const makeButtons = () => {

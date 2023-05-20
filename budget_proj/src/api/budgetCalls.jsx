@@ -7,11 +7,7 @@ export const getProfile = async () => {
     });
   if (resp) {
     let data = resp.data
-    let quotedata = await axios.get('/api/quote/')
-      .catch((e) => {
-        console.log("getProfile error: " + e)
-      });
-    return {'budgets': data, 'quotedata': quotedata.data}
+    return {'budgets': data}
   } else {
     console.log("getProfile error")
     return null

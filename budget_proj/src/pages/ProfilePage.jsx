@@ -14,7 +14,7 @@ export const profileLoader = async () => {
 
 export function ProfilePage() {
   const {user, setUser, cats} = useContext(UserContext);
-  const {budgets, quotedata} = useLoaderData();
+  const {budgets} = useLoaderData();
   
 
   return (
@@ -26,9 +26,6 @@ export function ProfilePage() {
       {budgets && cats && budgets.map((rel) => <CategoryForm category={cats.find(cat => cat.id==rel.category)} limit={rel.limit} id={rel.id}/>)}
       <h2 className="mt-3">Add a category:</h2>
       <CategoryForm />
-      <hr className="mt-5"/>
-      <p className="text-bold text-center">{quotedata.quote}</p>
-      <p className="text-bold text-center">-{quotedata.author}</p>
     </>
   )
 }
